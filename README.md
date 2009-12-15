@@ -3,6 +3,10 @@
 This node module provides robust querystring parsing and stringifying. It is based heavily
 on the [YUI QueryString module located here](http://github.com/isaacs/yui3/tree/master/src/querystring/js).
 
+## Acknowledgements
+
+Thanks to Isaac Schlueter for pointing me to the YUI code and allowing me to tweak it for node.js.
+
 ## querystring.js
 
 Exports the __parse__ and __stringify__ methods from the __querystring-parse__ 
