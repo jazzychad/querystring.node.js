@@ -28,6 +28,14 @@ sys.puts("qs:  " + qs.stringify(foo));
 
 sys.puts('------------------');
 
+/* test 2 */
+foo = qs.parse("foo=bar&foo=");
+
+sys.puts("obj: " + JSON.stringify(foo));
+sys.puts("qs:  " + qs.stringify(foo));
+
+sys.puts('------------------');
+
 /* test 3 */
 foo = qs.parse("foo[1]=1&foo[2]=2&foo[3]=4");
 

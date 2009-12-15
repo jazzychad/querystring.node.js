@@ -29,48 +29,50 @@ var stack = [];
  * @param name {String} (optional) Name of the current key, for handling children recursively.
  */
 var stringify = function (obj, sep, eq, name) {
-    sep = sep || "&";
-    eq = eq || "=";
+  sep = sep || "&";
+  eq = eq || "=";
     
-    if (util.isNull(obj) || util.isUndefined(obj) || typeof(obj) === 'function') {
-        return name ? escape(name) + eq : '';
-    }
+  if (util.isNull(obj) || util.isUndefined(obj) || typeof(obj) === 'function') {
+    return name ? escape(name) + eq : '';
+  }
     
-    if (util.is('Boolean',obj)) obj = +obj;
-    if (util.is('Number',obj) || util.is("String",obj)) {
+  if (util.is('Boolean',obj)) obj = +obj;
+  if (util.is('Number',obj) || util.is("String",obj)) {
 
-        return escape(name) + eq + escape(obj);
-    }    
+    return escape(name) + eq + escape(obj);
+  }    
     
-    if (util.isArray(obj)) {
-        var s = [];
-        name = name+'[]';
-        for (var i = 0, l = obj.length; i < l; i ++) {
-            s.push( stringify(obj[i], sep, eq, name) );
-        }
-        return s.join(sep);
+  if (util.isArray(obj)) {
+    var s = [];
+    name = name+'[]';
+    for (var i = 0, l = obj.length; i < l; i ++) {
+      s.push( stringify(obj[i], sep, eq, name) );
+    }
+    return s.join(sep);
+  }
+    
+  // Check for cyclical references in nested objects
+  for (var i = stack.length - 1; i >= 0; --i) {
+    if (stack[i] === obj) {
+      throw new Error("stringify. Cyclical reference");
+    }
+  }
+    
+  stack.push(obj);
+    
+  var s = [];
+  var begin = name ? name + '[' : '';
+  var end = name ? ']' : '';
+  for (var i in obj) if (obj.hasOwnProperty(i)) {
+      var n = begin + i + end;
+      s.push(stringify(obj[i], sep, eq, n));
     }
     
-    // Check for cyclical references in nested objects
-    for (var i = stack.length - 1; i >= 0; --i) if (stack[i] === obj) {
-            throw new Error("stringify. Cyclical reference");
-        }
+  stack.pop();
     
-    stack.push(obj);
-    
-    var s = [];
-    var begin = name ? name + '[' : '';
-    var end = name ? ']' : '';
-    for (var i in obj) if (obj.hasOwnProperty(i)) {
-            var n = begin + i + end;
-            s.push(stringify(obj[i], sep, eq, n));
-        }
-    
-    stack.pop();
-    
-    s = s.join(sep);
-    if (!s && name) return name + "=";
-    return s;
+  s = s.join(sep);
+  if (!s && name) return name + "=";
+  return s;
 };
 
 /* exports */
