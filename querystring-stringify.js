@@ -8,7 +8,7 @@
  * http://github.com/isaacs/yui3/tree/master/src/querystring/js
  *
  * Copyright (c) 2009, Yahoo! Inc. and Chad Etzel
- * BSD License (see LISENCE.md for info)
+ * BSD License (see LICENSE.md for info)
  *
  */
 

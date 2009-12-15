@@ -5,7 +5,7 @@
  * Chad Etzel
  *
  * Copyright (c) 2009, Yahoo! Inc. and Chad Etzel
- * BSD License (see LISENCE.md for info)
+ * BSD License (see LICENSE.md for info)
  *
  */
 
@@ -19,11 +19,10 @@ if (!Array.map) {
 	    
 	    var res = new Array(len);
 	    var thisp = arguments[2];
-	    for (var i = 0; i < len; i++)
-		{
-		    if (i in arr)
-			res[i] = fun.call(thisp, arr[i], i, arr);
-		}
+	    for (var i = 0; i < len; i++) {
+		if (i in arr)
+		    res[i] = fun.call(thisp, arr[i], i, arr);
+	    }
 	    
 	    return res;
 	};
