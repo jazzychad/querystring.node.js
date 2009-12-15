@@ -46,13 +46,13 @@ var util = require("./util");
 var parse = function (qs, sep, eq) {
     // wouldn't Array(qs.split()).map(pieceParser(eq)).reduce(mergeParams) be prettier?
     return util.reduce(
-			util.map(
-				  qs.split(sep || "&"),
-				  pieceParser(eq || "=")
-				  ),
+                        util.map(
+                                  qs.split(sep || "&"),
+                                  pieceParser(eq || "=")
+                                  ),
                         {},
-			mergeParams
-			);
+                        mergeParams
+                        );
 };
 
 var unescape = function (s) {
@@ -75,9 +75,9 @@ var pieceParser = function (eq) {
             // key=val, called from the map/reduce
             key = key.split(eq);
             return parsePiece(
-			      unescape(key.shift()),
-			      unescape(key.join(eq))
-			      );
+                              unescape(key.shift()),
+                              unescape(key.join(eq))
+                              );
         }
         key = key.replace(/^\s+|\s+$/g, '');
         if (util.isString(val)) {
@@ -110,19 +110,19 @@ var pieceParser = function (eq) {
 // the reducer function that merges each query piece together into one set of params
 function mergeParams (params, addition) {
     var ret;
-	    
+            
     if (!params){
-	// if it's uncontested, then just return the addition.
-	ret = addition;
+        // if it's uncontested, then just return the addition.
+        ret = addition;
     } else if (util.isArray(params)) {
-	// if the existing value is an array, then concat it.
-	ret = params.concat(addition);
+        // if the existing value is an array, then concat it.
+        ret = params.concat(addition);
     } else if (!util.isObject(params) || !util.isObject(addition)) {
-	// if the existing value is not an array, and either are not objects, arrayify it.	
-	ret = [params].concat(addition);
+        // if the existing value is not an array, and either are not objects, arrayify it.      
+        ret = [params].concat(addition);
     } else {
-	// else merge them as objects, which is a little more complex
-	ret = mergeObjects(params, addition);
+        // else merge them as objects, which is a little more complex
+        ret = mergeObjects(params, addition);
     }
     return ret;
 };
@@ -132,8 +132,8 @@ function mergeParams (params, addition) {
 // out the simple cases, and need to do the for-in business.
 function mergeObjects (params, addition) {
     for (var i in addition) if (i && addition.hasOwnProperty(i)) {
-	    params[i] = mergeParams(params[i], addition[i]);
-	}
+            params[i] = mergeParams(params[i], addition[i]);
+        }
     return params;
 };
 

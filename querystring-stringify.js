@@ -53,8 +53,8 @@ var stringify = function (obj, sep, eq, name) {
     
     // Check for cyclical references in nested objects
     for (var i = stack.length - 1; i >= 0; --i) if (stack[i] === obj) {
-	    throw new Error("stringify. Cyclical reference");
-	}
+            throw new Error("stringify. Cyclical reference");
+        }
     
     stack.push(obj);
     
@@ -62,9 +62,9 @@ var stringify = function (obj, sep, eq, name) {
     var begin = name ? name + '[' : '';
     var end = name ? ']' : '';
     for (var i in obj) if (obj.hasOwnProperty(i)) {
-	    var n = begin + i + end;
-	    s.push(stringify(obj[i], sep, eq, n));
-	}
+            var n = begin + i + end;
+            s.push(stringify(obj[i], sep, eq, n));
+        }
     
     stack.pop();
     

@@ -12,59 +12,59 @@
 
 if (!Array.map) {
     Array.map = function(arr, fun /*, thisp*/)
-	{
-	    var len = arr.length;
-	    if (typeof fun != "function")
-		throw new TypeError();
-	    
-	    var res = new Array(len);
-	    var thisp = arguments[2];
-	    for (var i = 0; i < len; i++) {
-		if (i in arr)
-		    res[i] = fun.call(thisp, arr[i], i, arr);
-	    }
-	    
-	    return res;
-	};
+        {
+            var len = arr.length;
+            if (typeof fun != "function")
+                throw new TypeError();
+            
+            var res = new Array(len);
+            var thisp = arguments[2];
+            for (var i = 0; i < len; i++) {
+                if (i in arr)
+                    res[i] = fun.call(thisp, arr[i], i, arr);
+            }
+            
+            return res;
+        };
 }
 
 
 if (!Array.reduce) {
     Array.reduce = function(arr, initial, fun /*, context*/) {
-	var len = arr.length;
-	if (typeof fun != "function") {
-	    throw new TypeError();
-	}
-	
-	// no value to return if no initial value and an empty array
-	if (len == 0 && arguments.length == 1) {
-	    throw new TypeError();
-	}
-	
-	var i = 0;
-	if (arguments.length >= 2) {
-	    var rv = arguments[1]; /* initial */
-	} else{
-	    do {
-		if (i in arr) {
-		    rv = arr[i++];
-		    break;
-		}
-		
-		// if array contains no values, no initial value to return
-		if (++i >= len) {
-		    throw new TypeError();
-		}
-	    } while (true);
-	}
-	
-	for (; i < len; i++) {
-	    if (i in arr) {
-		rv = fun.call(null, rv, arr[i], i, arr);
-	    }
-	}
-	
-	return rv;
+        var len = arr.length;
+        if (typeof fun != "function") {
+            throw new TypeError();
+        }
+        
+        // no value to return if no initial value and an empty array
+        if (len == 0 && arguments.length == 1) {
+            throw new TypeError();
+        }
+        
+        var i = 0;
+        if (arguments.length >= 2) {
+            var rv = arguments[1]; /* initial */
+        } else{
+            do {
+                if (i in arr) {
+                    rv = arr[i++];
+                    break;
+                }
+                
+                // if array contains no values, no initial value to return
+                if (++i >= len) {
+                    throw new TypeError();
+                }
+            } while (true);
+        }
+        
+        for (; i < len; i++) {
+            if (i in arr) {
+                rv = fun.call(null, rv, arr[i], i, arr);
+            }
+        }
+        
+        return rv;
     };
 }
 
