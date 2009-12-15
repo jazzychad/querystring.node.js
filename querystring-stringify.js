@@ -7,6 +7,9 @@
  * Based on YUI "querystring-stringify.js" module
  * http://github.com/isaacs/yui3/tree/master/src/querystring/js
  *
+ * Copyright (c) 2009, Yahoo! Inc. and Chad Etzel
+ * BSD License (see LISENCE.md for info)
+ *
  */
 
 var util = require("./util");
@@ -24,7 +27,6 @@ var stack = [];
  * @param sep {String} (optional) Character that should join param k=v pairs together. Default: "&"
  * @param eq  {String} (optional) Character that should join keys to their values. Default: "="
  * @param name {String} (optional) Name of the current key, for handling children recursively.
- * @static
  */
 var stringify = function (obj, sep, eq, name) {
     sep = sep || "&";

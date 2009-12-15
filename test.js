@@ -57,3 +57,4 @@ foo = qs.parse("foo[]=1&foo[]=2&foo[]=4");
 
 sys.puts("obj: " + JSON.stringify(foo));
 sys.puts("qs:  " + qs.stringify(foo));
+
