@@ -24,7 +24,6 @@ sys.puts('------------------');
 foo = qs.parse("foo=bar&baz=bing");
 
 sys.puts("obj: " + JSON.stringify(foo));
-
 sys.puts("qs:  " + qs.stringify(foo));
 
 sys.puts('------------------');
@@ -47,8 +46,8 @@ sys.puts('------------------');
 
 /* test 5 */
 foo = qs.parse("foo[1]=blah&foo[2]=2");
-sys.puts("qs:  " + qs.stringify(foo));
 
+sys.puts("qs:  " + qs.stringify(foo));
 sys.puts("obj: " + JSON.stringify(foo));
 
 sys.puts('------------------');
