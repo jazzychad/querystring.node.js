@@ -18,7 +18,7 @@ if (!Array.map) {
 		throw new TypeError();
 	    
 	    var res = new Array(len);
-	    var thisp = arguments[1];
+	    var thisp = arguments[2];
 	    for (var i = 0; i < len; i++)
 		{
 		    if (i in arr)
