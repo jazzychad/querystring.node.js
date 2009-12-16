@@ -19,12 +19,9 @@
  *
  */
 
-
-
-var qp = require("./querystring-parse"),
-    qs = require("./querystring-stringify");
-
-/* exports */
-
-exports.parse = qp.parse;
-exports.stringify = qs.stringify;
+[
+  require("./querystring-parse"),
+  require("./querystring-stringify")
+].forEach(function (q) {
+  for (var i in q) if (q.hasOwnProperty(i)) exports[i] = q[i];
+});
