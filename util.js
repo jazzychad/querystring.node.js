@@ -18,36 +18,34 @@ exports.isArray = isArray;
 exports.isObject = isObject;
 
 
-var toString = Object.prototype.toString;
-
 function is (type, obj) {
-    return toString.call(obj) === '[object '+type+']';
+  return Object.prototype.toString.call(obj) === '[object '+type+']';
 }
 
 function isArray (obj) {
-    return is("Array", obj);
+  return is("Array", obj);
 }
 
 function isObject (obj) {
-    return is("Object", obj);
+  return is("Object", obj);
 }
 
 function isString (obj) {
-    return is("String", obj);
+  return is("String", obj);
 }
 
 function isNumber (obj) {
-    return is("Number", obj);
+  return is("Number", obj);
 }
 
 function isBoolean (obj) {
-    return is("Boolean", obj);
+  return is("Boolean", obj);
 }
 
 function isNull (obj) {
-    return typeof obj === "object" && !obj;
+  return typeof obj === "object" && !obj;
 }
 
 function isUndefined (obj) {
-    return typeof obj === "undefined";
+  return typeof obj === "undefined";
 }

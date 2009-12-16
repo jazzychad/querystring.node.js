@@ -42,7 +42,6 @@ function querystring_stringify (obj, sep, eq, name, escape) {
   if (util.isNumber(obj) || util.isString(obj)) {
     return escape(name) + eq + escape(obj);
   }  
-  
   if (util.isArray(obj)) {
     var s = [];
     name = name+'[]';
