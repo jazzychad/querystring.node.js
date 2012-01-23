@@ -14,7 +14,7 @@ and __querystring-stringify__ sub-modules, repsectively.
 
 ### parse example
 
-    var sys = require("sys");
+    var sys = require("util");
     var qs = require("./querystring");
 
     var str = qs.parse("foo=bar&baz=qux");
@@ -27,7 +27,7 @@ and __querystring-stringify__ sub-modules, repsectively.
 
 ### stringify example
 
-    var sys = require("sys");
+    var sys = require("util");
     var qs = require("./querystring");
 
     var obj = {"foo":"bar","baz":"qux"};
