@@ -51,7 +51,7 @@ function querystring_parse (qs, sep, eq, unesc) {
 function unescape (s) {
     return decodeURIComponent(s.replace(/\+/g, ' '));
 };
-
+exports.unescape=unescape;
 
 // Parse a key=val string.
 // These can get pretty hairy
