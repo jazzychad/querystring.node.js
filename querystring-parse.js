@@ -12,7 +12,7 @@
  */
 
 
-var sys = require("sys"),
+var sys = require("util"),
   util = require("./util");
 
 exports.parse = querystring_parse;
